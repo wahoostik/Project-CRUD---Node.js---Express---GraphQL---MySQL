@@ -20,12 +20,13 @@ server.use('/graphql', graphqlHTTP({
     schema,
     graphiql: true})); // permet d'utiliser GraphiQL sur le localhost
 
+// Connexion avec la BDD
 AppDataSource.initialize()
     .then(() => {
-        console.log('Connecté à la base de données MySQL !');
+        console.log(chalk.green('Connecté à la base de données MySQL !'));
     })
     .catch((error) => {
-        console.log('Erreur de connexion !', error);
+        console.log(chalk.red('Erreur de connexion !', error));
     });
 
 // Activation du serveur
