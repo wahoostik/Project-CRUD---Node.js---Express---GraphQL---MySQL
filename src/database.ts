@@ -1,4 +1,4 @@
-import chalk from 'chalk';
+// import chalk from 'chalk';
 import 'dotenv/config';
 import { createConnection } from 'typeorm';
 /*
@@ -22,8 +22,9 @@ main().catch((error) => {
 });
 */
 import { DataSource } from 'typeorm';
+import { User } from './GraphQL/Entities/UserEntities';
 
-const AppDataSource = new DataSource({
+export const AppDataSource = new DataSource({
     type: 'mysql',
     host: process.env.HOST,
     port: 3306,
@@ -31,14 +32,6 @@ const AppDataSource = new DataSource({
     password: process.env.PASSWORD,
     database:  process.env.DATABASE,
     logging: true,
-    synchronize: false,
-    entities: []
+    synchronize: false, // true, lors de la création de la BDD
+    entities: [User]
 });
-
-AppDataSource.initialize()
-    .then(() => {
-        console.log(chalk.green('Connecté à la base de données MySQL !'));
-    })
-    .catch((error) => {
-        console.log(chalk.red('Erreur de connexion !', error));
-    });
