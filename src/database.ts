@@ -1,26 +1,4 @@
-// import chalk from 'chalk';
 import 'dotenv/config';
-import { createConnection } from 'typeorm';
-/*
-const main = async () => {
-    await createConnection({
-        type: 'mysql',
-        database: process.env.DATABASE,
-        username: process.env.USER,
-        password: process.env.PASSWORD,
-        logging: true,
-        synchronize: false,
-        // entities: [Users],
-    });
-};
-
-main().catch((error) => {
-    if (error) {
-        console.log(chalk.red('Erreur de connexion !', error));
-    }
-    console.log(chalk.green('Connecté à la base de données MySQL !'));
-});
-*/
 import { DataSource } from 'typeorm';
 import { User } from './GraphQL/Entities/UserEntities';
 
